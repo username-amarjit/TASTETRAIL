@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark:bg-gray-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Review</title>
+    <title>Recipe Sharing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hero-search {
@@ -18,20 +18,35 @@
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        .dark .hero-search.scrolled {
+            background-color: #1a202c;
+            box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
-    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+<body class="bg-gray-100 text-gray-900 font-sans dark:bg-dark-bg dark:text-dark-text">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 dark:bg-gray-800">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-red-600">Recipe Review</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="hover:text-red-600">Home</a></li>
-                    <li><a href="#" class="hover:text-red-600">Recipes</a></li>
-                    <li><a href="#" class="hover:text-red-600">About</a></li>
-                    <li><a href="#" class="hover:text-red-600">Contact</a></li>
-                    <li><a href="#" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300">Sign Up</a></li>
-                    <li><a href="#" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 transition duration-300">Log In</a></li>
+            <h1 class="text-2xl font-bold text-red-600 dark:text-red-400">Recipe Sharing</h1>
+            <button id="menuToggle" class="block lg:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <nav id="menu" class="hidden lg:block absolute top-full left-0 w-full bg-white dark:bg-gray-800 lg:relative lg:w-auto lg:bg-transparent">
+                <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-7 p-4 lg:p-0">
+                    <li class="flex items-center"><a href="#" class="block py-2 hover:text-red-600 dark:hover:text-red-400">About</a></li>
+                    <li class="flex items-center mr-2">
+                        <a href="/frontend/login.html" class="w-full lg:w-auto flex items-center justify-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300 dark:bg-red-500 dark:hover:bg-red-600">
+                            Account
+                        </a>
+                    </li>
+                    <li class="flex items-center">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" id="themeModeToggle">
+                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div> 
+                        </label>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -41,138 +56,138 @@
         <section class="hero-section relative h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('/frontend/assets/images/bg-image.png');">
             <div class="absolute inset-0 bg-black opacity-50"></div>
                 <div id="hero-search" class="z-10 w-full max-w-2xl px-4">
-                <div id="search-container" class="bg-white p-6 rounded-md shadow-lg">
-                    <h2 class="text-3xl font-bold mb-4 text-center">Find the best recipes</h2>
+                <div id="search-container" class="bg-white p-6 rounded-lg shadow-lg dark:bg-gray-800">
+                    <h2 class="text-3xl font-bold mb-4 text-center dark:text-white">Find the best recipes</h2>
                     <div class="flex">
-                        <input type="text" placeholder="Search for recipes..." class="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-600">
-                        <button class="bg-red-600 text-white px-6 py-3 rounded-r-md hover:bg-red-700 transition duration-300">Search</button>
+                        <input type="text" placeholder="Search for recipes..." class="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <button class="bg-red-600 text-white px-6 py-3 rounded-r-md hover:bg-red-700 transition duration-300 dark:bg-red-500 dark:hover:bg-red-600">Search</button>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="py-16 bg-white">
+        <section class="py-16 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Explore Recipes by Cuisine</h2>
+                <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">Explore Recipes by Cuisine</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden dark:bg-gray-700">
                         <img src="/frontend/assets/images/taj-mahal.png" alt="Taj Mahal, India" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Indian Cuisine</h3>
-                            <p class="text-gray-600 mb-4">Explore the rich flavors and spices of Indian recipes.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Recipes &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Indian Cuisine</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Explore the rich flavors and spices of Indian recipes.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Recipes &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden dark:bg-gray-700">
                         <img src="/frontend/assets/images/italy-col.png" alt="Colosseum, Italy" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Italian Cuisine</h3>
-                            <p class="text-gray-600 mb-4">Discover the delicious world of Italian cooking.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Recipes &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Italian Cuisine</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Discover the delicious world of Italian cooking.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Recipes &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-md overflow-hidden dark:bg-gray-700">
                         <img src="/frontend/assets/images/chichen.png" alt="Chichen Itza, Mexico" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Mexican Cuisine</h3>
-                            <p class="text-gray-600 mb-4">Spice up your meals with authentic Mexican recipes.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Recipes &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Mexican Cuisine</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Spice up your meals with authentic Mexican recipes.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Recipes &rarr;</a>
                         </div>
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <a href="#" class="inline-block bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition duration-300">View More Cuisines</a>
+                    <a href="#" class="inline-block bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition duration-300 dark:bg-red-500 dark:hover:bg-red-600">View More Cuisines</a>
                 </div>
             </div>
         </section>
-        <section class="py-16 bg-gray-100">
+        <section class="py-16 bg-gray-100 dark:bg-gray-900">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Recipe Collections</h2>
+                <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">Recipe Collections</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
                         <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Healthy Eating" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Healthy Eating</h3>
-                            <p class="text-gray-600 mb-4">Nutritious and delicious recipes for a balanced diet.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Collection &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Healthy Eating</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Nutritious and delicious recipes for a balanced diet.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Collection &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
                         <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="Quick & Easy" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Quick & Easy</h3>
-                            <p class="text-gray-600 mb-4">Simple recipes for busy weeknights.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Collection &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Quick & Easy</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Simple recipes for busy weeknights.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Collection &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
                         <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb" alt="Vegetarian Delights" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Vegetarian Delights</h3>
-                            <p class="text-gray-600 mb-4">Tasty meatless recipes for everyone.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Collection &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Vegetarian Delights</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Tasty meatless recipes for everyone.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Collection &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
                         <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Dessert Lovers" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Dessert Lovers</h3>
-                            <p class="text-gray-600 mb-4">Indulgent sweet treats and baked goods.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 font-medium">View Collection &rarr;</a>
+                            <h3 class="text-xl font-semibold mb-2 dark:text-white">Dessert Lovers</h3>
+                            <p class="text-gray-600 mb-4 dark:text-gray-300">Indulgent sweet treats and baked goods.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 font-medium dark:text-red-400 dark:hover:text-red-300">View Collection &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="py-12 bg-white">
+        <section class="py-12 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl font-bold text-center mb-6">Trending Recipes</h2>
+                <h2 class="text-2xl font-bold text-center mb-6 dark:text-white">Trending Recipes</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141" alt="Avocado Toast" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Avocado Toast</h3>
-                            <p class="text-xs text-gray-600 mb-2">A simple and nutritious breakfast favorite.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Avocado Toast</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">A simple and nutritious breakfast favorite.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Homemade Pizza" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Homemade Pizza</h3>
-                            <p class="text-xs text-gray-600 mb-2">Create the perfect pizza right in your kitchen.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Homemade Pizza</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">Create the perfect pizza right in your kitchen.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853" alt="Chocolate Lava Cake" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Chocolate Lava Cake</h3>
-                            <p class="text-xs text-gray-600 mb-2">Indulgent dessert with a gooey chocolate center.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Chocolate Lava Cake</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">Indulgent dessert with a gooey chocolate center.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Vegetable Salad" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Vegetable Salad</h3>
-                            <p class="text-xs text-gray-600 mb-2">Fresh and healthy mix of colorful vegetables.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Vegetable Salad</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">Fresh and healthy mix of colorful vegetables.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468" alt="Grilled Salmon" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Grilled Salmon</h3>
-                            <p class="text-xs text-gray-600 mb-2">Perfectly grilled salmon with lemon and herbs.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Grilled Salmon</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">Perfectly grilled salmon with lemon and herbs.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
-                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden">
+                    <div class="bg-gray-100 rounded-lg shadow-sm overflow-hidden dark:bg-gray-700">
                         <img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5" alt="Fruit Smoothie" class="w-full h-32 object-cover">
                         <div class="p-3">
-                            <h3 class="text-sm font-semibold mb-1">Fruit Smoothie</h3>
-                            <p class="text-xs text-gray-600 mb-2">Refreshing blend of mixed fruits and yogurt.</p>
-                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium">View Recipe &rarr;</a>
+                            <h3 class="text-sm font-semibold mb-1 dark:text-white">Fruit Smoothie</h3>
+                            <p class="text-xs text-gray-600 mb-2 dark:text-gray-300">Refreshing blend of mixed fruits and yogurt.</p>
+                            <a href="#" class="text-red-600 hover:text-red-700 text-xs font-medium dark:text-red-400 dark:hover:text-red-300">View Recipe &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -181,20 +196,17 @@
 
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-800 text-white py-8 dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold mb-4">About Us</h3>
-                    <p class="text-gray-400">Recipe Review is your go-to platform for discovering and sharing delicious recipes from around the world.</p>
+                    <p class="text-gray-400">Recipe sharing is your go-to platform for discovering and sharing delicious recipes from around the world.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Recipes</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -213,9 +225,14 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2023 Recipe Review. All rights reserved.</p>
+                <p>&copy; 2023 Recipe sharing. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+
+    </script>
+    <script type="module" src="/frontend/index.js"></script>
 </body>
 </html>

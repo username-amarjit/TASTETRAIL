@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="dark:bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Login - Recipe Sharing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans dark:bg-gray-800 dark:text-gray-100">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-red-600 dark:text-red-400">Recipe Sharing</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/frontend/index.html" class="hover:text-red-600 dark:hover:text-red-400">Home</a></li>
+                    <li>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" id="themeModeToggle">
+                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div> 
+                        </label>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 mt-16">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-700">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-center mb-6 dark:text-white">Chef Login</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 dark:text-gray-300">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2 dark:text-gray-300">Password</label>
+                        <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white" required>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Forgot password?</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 dark:bg-red-500 dark:hover:bg-red-600">Log In</button>
+                    </div>
+                </form>
+            </div>
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 dark:bg-gray-800 dark:border-gray-600">
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                    Don't have an account? <a href="#" class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 dark:bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Recipe Sharing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/frontend/index.js"></script>
+</body>
+</html>

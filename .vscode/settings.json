@@ -1,5 +1,13 @@
 {
     "python.analysis.autoImportCompletions": true,
     "python.analysis.typeCheckingMode": "basic",
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "s1",
+            "database": "${workspaceFolder:TasteTrail}/backend/database1.db"
+        }
+    ]
 }

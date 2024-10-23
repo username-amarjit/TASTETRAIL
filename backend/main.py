@@ -68,32 +68,29 @@ async def read_item(item_id: str, q: ModelName | None = None, short: bool = Fals
 def on_startup():
     create_db_and_tables()
 
+from model import Recipe
 
-# @app.post("/heroes/")
-# def create_hero(hero: Hero, session: SessionDep) -> Hero:
-#     session.add(hero)
-#     session.commit()
-#     session.refresh(hero)
-#     return hero
+@app.post("/receipe/")
+def create_receipe(receipe : Recipe, session: SessionDep):
+    session.add(receipe)
+    session.commit()
+    session.refresh(receipe)
+    return receipe
 
-
-# @app.get("/heroes/")
-# def read_heroes(
-#     session: SessionDep,
-#     offset: int = 0,
-#     limit: Annotated[int, Query(le=100)] = 100,
-# ) -> list[Hero]:
-#     heroes = session.exec(select(Hero).offset(offset).limit(limit)).all()
-#     return heroes
+@app.get("/receipe/")
+def read_receipes(session : SessionDep,offset: int = 0,
+                 limit: Annotated[int, Query(le=100)] = 100,):
+    receipes = session.exec(select(Recipe).offset(offset).limit(limit)).all()
+    return receipes
 
 
-# @app.get("/heroes/{hero_id}")
-# def read_hero(hero_id: int, session: SessionDep) -> Hero:
-#     hero = session.get(Hero, hero_id)
-#     if not hero:
-#         raise HTTPException(status_code=404, detail="Hero not found")
-#     return hero
-
+@app.get("/receipe/{receipe_id}")
+def read_receipe(receipt_id: int, session: SessionDep):
+    receipe = session.get(Recipe, receipt_id)
+    if not receipe:
+        raise HTTPException(status_code=404, detail="Hero not found")
+    return receipe
+  
 
 # @app.delete("/heroes/{hero_id}")
 # def delete_hero(hero_id: int, session: SessionDep):

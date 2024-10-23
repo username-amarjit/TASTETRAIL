@@ -7,7 +7,7 @@ from sqlalchemy import table
 from sqlmodel import Field, Session, SQLModel, create_engine, select, Relationship
 
 class baseModel(SQLModel,table=False):
-    id: int = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     status: str
     created_datetimestamp: Optional[datetime] = Field(default=None, nullable=False)
     updated_datetimestamp: Optional[datetime] = Field(default=None, nullable=False)
@@ -18,7 +18,7 @@ class UserModel(baseModel,table=True):
     password : str
     isActive : str
     isLoggedIn : bool
-    recipes: List["Recipe"] = Relationship(back_populates="user")
+    # recipes: List["Recipe"] = Relationship(back_populates="users")
 
 class Category(baseModel, table=True):
     catrgoryName: str
@@ -44,7 +44,9 @@ class Recipe(baseModel, table=True):
     category: Optional[Category] = Relationship(back_populates="recipes")
     # Many-to-Many relationship
     ingredients: List[Ingredient] = Relationship(back_populates="recipes", link_model=RecipeIngredientLink)
-    user : int = Field(foreign_key="usermodel.id")
+    # user_id : int = Field(foreign_key="usermodel.id")
+    # user: Optional[UserModel] = Relationship(back_populates="recipes")
+
 
 
 
@@ -56,7 +58,6 @@ engine = create_engine(sqlite_url, connect_args=connect_args)
 
 
 def create_db_and_tables():
-    print('in here------------------')
     SQLModel.metadata.create_all(engine)
 
 
@@ -64,6 +65,4 @@ def get_session():
     with Session(engine) as session:
         yield session
 
-
 SessionDep = Annotated[Session, Depends(get_session)]
-
